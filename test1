@@ -19,50 +19,6 @@ void solve(){
     cout<<"False"<<endl;
 }
 
-//problem statement 2
-void brute_force(int arr[],vector<int> &temp,int ind,int sum,vector<vector<int>> &ans){
-    
-    if(ind==n) return ;
-    
-    if(sum==0){
-        ans.push_back(temp);
-        return;
-    }
-    //taking the sum
-    sum+=arr[ind];
-    brute_force(arr,temp,ind+1,sum);
-    sum-=arr[ind];
-    brute_force(arr,temp,ind+1,sum);
-}
-
-//function for finding
-bool find(int n,int temp,vector<int> &v){
-    for(int i=0;i<v.size();i++){
-        if(v[i]==temp) return true;
-    }
-    return false;
-}
-
-void solve(){
-    int n;
-    cin>>n;
-    int arr[n];
-    for(int i=0;i<n;i++) cin>>arr[i];
-    for(int i=0;i<n;i++) cout<<arr[i]<<" ";
-    vector<vector<int>> ans;
-    vector <int> temp;
-    brute_force(arr,temp,0,0,ans)
-    cout<<"The no. of solutions"<<endl;
-    cout<<ans.size()<<endl;
-    for(auto & v : ans){
-        for(int i=0;i<n;i++){
-            if(find(n,arr[i],v)) continue;
-            cout<<v[i]<<" ";
-        }
-        cout<<endl;
-    }
-}
-
 int main()
 {
     int t;cin>>t;
